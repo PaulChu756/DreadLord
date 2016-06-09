@@ -1,35 +1,50 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections;
 
 public class CharacterController : MonoBehaviour
 {
-    public float m_movement = 10.0f;
+    [SerializeField]
+    private float m_Speed = 10.0f;
+    [SerializeField]
+    private float m_Jump = 10.0f;
+    private Vector3 m_direction = Vector3.zero;
 
-    void Move()
+    void Movement()
     {
         if(Input.GetKey(KeyCode.W))
         {
-            transform.Translate(Vector3.forward * m_movement * Time.deltaTime);
+            m_direction = new Vector3(0, 0, 1);
+            transform.position += m_direction * m_Speed * Time.deltaTime;
         }
 
         if (Input.GetKey(KeyCode.A))
         {
-            transform.Translate(Vector3.left * m_movement * Time.deltaTime);
+            m_direction = new Vector3(-1, 0, 0);
+            transform.position += m_direction * m_Speed * Time.deltaTime;
         }
 
         if (Input.GetKey(KeyCode.D))
         {
-            transform.Translate(Vector3.right * m_movement * Time.deltaTime);
+            m_direction = new Vector3(1, 0, 0);
+            transform.position += m_direction * m_Speed * Time.deltaTime;
         }
 
         if (Input.GetKey(KeyCode.S))
         {
-            transform.Translate(Vector3.back * m_movement * Time.deltaTime);
+            m_direction = new Vector3(0, 0, -1);
+            transform.position += m_direction * m_Speed * Time.deltaTime;
+        }
+
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            m_direction = new Vector3(0, 1, 0);
+            transform.position += m_direction * m_Jump * Time.deltaTime;
         }
     }
 
     void Update()
     {
-        Move();
+        Movement();
     }
 }
