@@ -19,6 +19,11 @@ public class CharacterController : MonoBehaviour
 
     void Update()
     {
+        
+    }
+
+    void FixedUpdate()
+    {
         Movement();
         Jump();
     }
@@ -36,25 +41,31 @@ public class CharacterController : MonoBehaviour
         if(Input.GetKey(KeyCode.W))
         {
             m_direction = new Vector3(0, 0, 1);
-            rb.MovePosition(transform.position + m_direction * m_Speed * Time.deltaTime);
+            transform.position += m_direction * m_Speed * Time.deltaTime;
+            //rb.MovePosition(transform.position + m_direction * m_Speed * Time.deltaTime);
         }
 
         if (Input.GetKey(KeyCode.A))
         {
             m_direction = new Vector3(-1, 0, 0);
-            rb.MovePosition(transform.position + m_direction * m_Speed * Time.deltaTime);
+            transform.position += m_direction * m_Speed * Time.deltaTime;
+            //rb.MovePosition(transform.position + m_direction * m_Speed * Time.deltaTime);
         }
 
         if (Input.GetKey(KeyCode.D))
         {
             m_direction = new Vector3(1, 0, 0);
-            rb.MovePosition(transform.position + m_direction * m_Speed * Time.deltaTime);
+            transform.position += m_direction * m_Speed * Time.deltaTime;
+            //rb.MovePosition(transform.position + m_direction * m_Speed * Time.deltaTime);
         }
 
         if (Input.GetKey(KeyCode.S))
         {
             m_direction = new Vector3(0, 0, -1);
-            rb.MovePosition(transform.position + m_direction * m_Speed * Time.deltaTime);
+            transform.position += m_direction * m_Speed * Time.deltaTime;
+            //rb.MovePosition(transform.position + m_direction * m_Speed * Time.deltaTime);
         }
+
+        rb.MovePosition(transform.position + m_direction * m_Speed * Time.deltaTime);
     }
 }
