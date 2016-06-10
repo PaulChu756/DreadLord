@@ -9,6 +9,27 @@ public class CharacterController : MonoBehaviour
     [SerializeField]
     private float m_Jump = 10.0f;
     private Vector3 m_direction = Vector3.zero;
+    private bool isJump;
+    public Rigidbody rb;
+
+    void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
+
+    void Update()
+    {
+        Movement();
+        Jump();
+    }
+
+    void Jump()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            rb.AddForce(transform.up * m_Jump, ForceMode.VelocityChange);
+        }
+    }
 
     void Movement()
     {
@@ -35,16 +56,5 @@ public class CharacterController : MonoBehaviour
             m_direction = new Vector3(0, 0, -1);
             transform.position += m_direction * m_Speed * Time.deltaTime;
         }
-
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            m_direction = new Vector3(0, 1, 0);
-            transform.position += m_direction * m_Jump * Time.deltaTime;
-        }
-    }
-
-    void Update()
-    {
-        Movement();
     }
 }
