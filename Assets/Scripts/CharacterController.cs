@@ -8,7 +8,9 @@ public class CharacterController : MonoBehaviour
     [SerializeField] 
     private float m_Speed = 20.0f;
     [SerializeField]
-    private float m_Jump = 20.0f;
+    private float m_Turn = 20.0f;
+    [SerializeField]
+    private float m_Jump = 100.0f;
     [SerializeField]
     private Vector3 m_Velocity = Vector3.zero;
     [SerializeField]
@@ -20,12 +22,7 @@ public class CharacterController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
-    void Update()
-    {
-        
-    }
-
-    void FixedUpdate()
+    void FixedUpdate() // Use FixedUpdate because physic cal's on rigidbodies.
     {
         Movement();
         Jump();
@@ -41,7 +38,7 @@ public class CharacterController : MonoBehaviour
 
     void Movement()
     {
-        if(Input.GetKey(KeyCode.W))
+        if (Input.GetKey(KeyCode.W))
         {
             m_direction = new Vector3(0, 0, 1);
             m_Velocity += m_direction * m_Speed * Time.deltaTime;
@@ -64,6 +61,6 @@ public class CharacterController : MonoBehaviour
             m_direction = new Vector3(0, 0, -1);
             m_Velocity += m_direction * m_Speed * Time.deltaTime;
         }
-        rb.MovePosition(transform.position + m_Velocity * Time.deltaTime); // Bread and butter
+        rb.MovePosition(transform.position + m_Velocity * Time.deltaTime);
     }
 }
