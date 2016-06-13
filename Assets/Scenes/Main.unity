@@ -340,7 +340,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1483858705}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dee8b18f2a0ea7149a6d3d2919eba3a9, type: 3}
   m_Name: 
@@ -376,7 +376,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: f1bcc87a5cf6219469550a51bbe1367c, type: 2}
+  - {fileID: 2100000, guid: 48a7cdd5f7300f34fab10fb68641df71, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -461,6 +461,7 @@ MonoBehaviour:
   m_Jump: 10
   m_Velocity: {x: 0, y: 0, z: 0}
   m_direction: {x: 0, y: 0, z: 0}
+  m_Rotate: {x: 0, y: 0, z: 0}
   rb: {fileID: 836026759}
 --- !u!23 &2079041136
 MeshRenderer:

@@ -20,16 +20,19 @@ public class AimMouseCamera : MonoBehaviour
 
     void LateUpdate()
     {
-        // use Get Axis Mouse X, to rotate on X-Axis
+        //use Get Axis Mouse X, to rotate on X-Axis
         float horizontal = Input.GetAxis("Mouse X") * rotateSpeed;
-        target.transform.Rotate(0, horizontal, 0);
+        target.transform.Rotate(0, horizontal,  0);
 
-        //// give an offset same direction and put camera behind target.
-        //float desiredAngle = target.transform.eulerAngles.y;
-        //Quaternion rotation = Quaternion.Euler(0, desiredAngle, 0);
-        //transform.position = target.transform.position - (rotation * offSet);
+        //float vertical = Input.GetAxis("Mouse Y") * rotateSpeed;
+        //target.transform.Rotate(vertical, 0, 0);
 
-        //transform.LookAt(target.transform);
+        // give an offset same direction and put camera behind target.
+        float desiredAngle = target.transform.eulerAngles.y;
+        Quaternion rotation = Quaternion.Euler(0, desiredAngle, 0);
+        transform.position = target.transform.position - (rotation * offSet);
+
+        transform.LookAt(target.transform);
     }
 
 }

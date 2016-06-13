@@ -15,6 +15,8 @@ public class CharacterController : MonoBehaviour
     private Vector3 m_Velocity = Vector3.zero;
     [SerializeField]
     private Vector3 m_direction = Vector3.zero;
+    [SerializeField]
+    private Vector3 m_Rotate = Vector3.zero;
     public Rigidbody rb;
 
     void Start()
@@ -42,25 +44,35 @@ public class CharacterController : MonoBehaviour
         {
             m_direction = new Vector3(0, 0, 1);
             m_Velocity += m_direction * m_Speed * Time.deltaTime;
+            transform.Rotate(0,  m_Turn * Time.deltaTime, 0);
+            //m_Rotate += m_direction * m_Turn * Time.deltaTime;
         }
 
         if (Input.GetKey(KeyCode.A))
         {
             m_direction = new Vector3(-1, 0, 0);
             m_Velocity += m_direction * m_Speed * Time.deltaTime;
+            transform.Rotate(0, m_Turn * Time.deltaTime, 0);
+            //m_Rotate += m_direction * m_Turn * Time.deltaTime;
         }
 
         if (Input.GetKey(KeyCode.D))
         {
             m_direction = new Vector3(1, 0, 0);
             m_Velocity += m_direction * m_Speed * Time.deltaTime;
+            transform.Rotate(0, m_Turn * Time.deltaTime, 0);
+            //m_Rotate += m_direction * m_Turn * Time.deltaTime;
         }
 
         if (Input.GetKey(KeyCode.S))
         {
             m_direction = new Vector3(0, 0, -1);
             m_Velocity += m_direction * m_Speed * Time.deltaTime;
+            transform.Rotate(0, m_Turn * Time.deltaTime, 0);
+            //m_Rotate += m_direction * m_Turn * Time.deltaTime;
         }
+        //Quaternion rotate = Quaternion.Euler(m_Rotate * Time.deltaTime);
         rb.MovePosition(transform.position + m_Velocity * Time.deltaTime);
+        //rb.MoveRotation(rb.rotation * rotate);
     }
 }
