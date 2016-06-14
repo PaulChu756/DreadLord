@@ -6,15 +6,15 @@ public class CharacterController : MonoBehaviour
 {
     // Serializefield shows variable inside inspector.
     [SerializeField] 
-    private float m_MovementSpeed = 1.0f;
+    private float m_MovementSpeed = 10.0f;
     [SerializeField]
     private float m_TurnSpeed = 10.0f;
     [SerializeField]
     private float m_Jump = 10.0f;
     [SerializeField]
-    private Vector3 m_Velocity = Vector3.zero;
+    private float m_Friction = 2.5f;
     [SerializeField]
-    private Vector3 m_direction = Vector3.zero;
+    private Vector3 m_Velocity = Vector3.zero;
     [SerializeField]
     private Vector3 m_Rotate = Vector3.zero;
     public Rigidbody rb;
@@ -24,12 +24,14 @@ public class CharacterController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
-    void FixedUpdate() // Use FixedUpdate because physic cal's on rigidbodies.
+    // Use FixedUpdate because physic cal's on rigidbodies.
+    void FixedUpdate() 
     {
         Movement();
         Jump();
     }
 
+    // May take out
     void Jump()
     {
         if (Input.GetKeyDown(KeyCode.Space))
@@ -40,35 +42,31 @@ public class CharacterController : MonoBehaviour
 
     void Movement()
     {
-        // Forward
+        // Friction force
+        m_Velocity -= m_Velocity * m_Friction * rb.mass * Time.deltaTime;
+
         if (Input.GetKey(KeyCode.W))
         {
-            m_direction = new Vector3(0, 0, 1);
-            m_Velocity += m_direction * m_MovementSpeed * Time.deltaTime;
+            m_Velocity += transform.forward * m_MovementSpeed * Time.deltaTime;
         }
 
-        // Backward
         if (Input.GetKey(KeyCode.S))
         {
-            m_direction = new Vector3(0, 0, -1);
-            m_Velocity += m_direction * m_MovementSpeed * Time.deltaTime;
+            m_Velocity -= transform.forward * m_MovementSpeed * Time.deltaTime;
         }
 
-        // Left
         if (Input.GetKey(KeyCode.A))
         {
-            m_direction = new Vector3(-1, 0, 0);
-            m_Velocity += m_direction * m_MovementSpeed * Time.deltaTime;
+            m_Velocity -= transform.right * m_MovementSpeed * Time.deltaTime;
             //transform.Rotate(Vector3.up * -m_TurnSpeed * Time.deltaTime);
         }
 
-        // Right
         if (Input.GetKey(KeyCode.D))
         {
-            m_direction = new Vector3(1, 0, 0);
-            m_Velocity += m_direction * m_MovementSpeed * Time.deltaTime;
+            m_Velocity += transform.right * m_MovementSpeed * Time.deltaTime;
             //transform.Rotate(Vector3.up * m_TurnSpeed * Time.deltaTime);
         }
+
         rb.MovePosition(rb.position + m_Velocity * Time.deltaTime);
         //rb.MoveRotation(rb.rotation * rotate);
     }

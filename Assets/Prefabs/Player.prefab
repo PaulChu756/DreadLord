@@ -266,10 +266,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_MovementSpeed: 20
-  m_TurnSpeed: 20
+  m_TurnSpeed: 500
   m_Jump: 10
+  m_Friction: 2.5
+  m_Direction: {x: 0, y: 0, z: 0}
   m_Velocity: {x: 0, y: 0, z: 0}
-  m_direction: {x: 0, y: 0, z: 0}
   m_Rotate: {x: 0, y: 0, z: 0}
   rb: {fileID: 5479040}
 --- !u!124 &12471068
