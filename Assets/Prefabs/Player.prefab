@@ -12,6 +12,7 @@ GameObject:
   - 92: {fileID: 9204412}
   - 124: {fileID: 12471068}
   - 81: {fileID: 8195978}
+  - 114: {fileID: 11422362}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -68,8 +69,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 447206}
   - {fileID: 458910}
+  - {fileID: 447206}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &447206
@@ -84,7 +85,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 15, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 407182}
-  m_RootOrder: 0
+  m_RootOrder: 1
 --- !u!4 &458910
 Transform:
   m_ObjectHideFlags: 1
@@ -97,7 +98,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 407182}
-  m_RootOrder: 1
+  m_RootOrder: 0
 --- !u!20 &2061256
 Camera:
   m_ObjectHideFlags: 1
@@ -142,7 +143,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: bba4b3bf0ed961f4993a5db363c12e68, type: 2}
+  - {fileID: 0}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -239,6 +240,20 @@ Behaviour:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100300}
   m_Enabled: 1
+--- !u!114 &11422362
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100300}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dee8b18f2a0ea7149a6d3d2919eba3a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 153388}
+  rotateSpeed: 5
+  offSet: {x: 0, y: 0, z: 0}
 --- !u!114 &11444222
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -250,8 +265,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eaa61851d6db02e44b67e1fdc169133e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Speed: 10
-  m_Jump: 1000
+  m_MovementSpeed: 20
+  m_TurnSpeed: 20
+  m_Jump: 10
+  m_Velocity: {x: 0, y: 0, z: 0}
+  m_direction: {x: 0, y: 0, z: 0}
+  m_Rotate: {x: 0, y: 0, z: 0}
+  rb: {fileID: 5479040}
 --- !u!124 &12471068
 Behaviour:
   m_ObjectHideFlags: 1
