@@ -190,10 +190,10 @@ Transform:
   m_PrefabParentObject: {fileID: 447206, guid: 2fc41787428e97f449d849ef142272ce, type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 354911062}
-  m_LocalRotation: {x: 0.13052621, y: 0, z: 0, w: 0.9914449}
-  m_LocalPosition: {x: 0, y: 3, z: -4}
+  m_LocalRotation: {x: 0.38268346, y: 0, z: 0, w: 0.9238795}
+  m_LocalPosition: {x: 0, y: 20, z: -4}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 15, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 45, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -369,9 +369,9 @@ MonoBehaviour:
   m_TurnSpeed: 100
   m_Jump: 10
   m_Friction: 5
-  m_Direction: {x: 0, y: 0, z: 0}
   m_Velocity: {x: 0, y: 0, z: 0}
-  m_Rotate: {x: 0, y: 0, z: 0}
+  m_Direction: {x: 0, y: 0, z: 0}
+  m_AngleVel: {x: 0, y: 0, z: 0}
   rb: {fileID: 1006752357}
 --- !u!54 &1006752357
 Rigidbody:
@@ -445,7 +445,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1006752355}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: 5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:

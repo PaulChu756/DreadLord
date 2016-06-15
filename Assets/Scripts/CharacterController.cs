@@ -16,8 +16,9 @@ public class CharacterController : MonoBehaviour
     [SerializeField]
     private Vector3 m_Velocity = Vector3.zero;
     [SerializeField]
-    private Vector3 m_Rotate = Vector3.zero;
-    Vector3 angleVel;
+    private Vector3 m_Direction = Vector3.zero;
+    [SerializeField]
+    private Vector3 m_AngleVel = Vector3.zero;
     public Rigidbody rb;
 
     void Start()
@@ -45,37 +46,38 @@ public class CharacterController : MonoBehaviour
     {
         // Friction force
         m_Velocity -= m_Velocity * m_Friction * rb.mass * Time.deltaTime;
+
         // Rotate
         Quaternion Rotate = Quaternion.identity;
+
+        m_AngleVel = Quaternion.LookRotation(rb.velocity).eulerAngles;
 
         if (Input.GetKey(KeyCode.W))
         {
             m_Velocity += transform.forward * m_MovementSpeed * Time.deltaTime;
-
+            m_Direction = m_Velocity.normalized;
         }
 
         if (Input.GetKey(KeyCode.S))
         {
             m_Velocity -= transform.forward * m_MovementSpeed * Time.deltaTime;
-
+            m_Direction = m_Velocity.normalized;
         }
 
         if (Input.GetKey(KeyCode.A))
         {
             m_Velocity -= transform.right * m_MovementSpeed * Time.deltaTime;
-            //transform.Rotate(Vector3.up * -m_TurnSpeed * Time.deltaTime);
-             Rotate = Quaternion.Euler(new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y - 90, transform.localEulerAngles.z) * Time.deltaTime);
+            m_Direction = m_Velocity.normalized;
+            Rotate = Quaternion.LookRotation(m_Direction);
         }
 
         if (Input.GetKey(KeyCode.D))
         {
             m_Velocity += transform.right * m_MovementSpeed * Time.deltaTime;
-            //transform.Rotate(Vector3.up * m_TurnSpeed * Time.deltaTime);
-             Rotate = Quaternion.Euler(new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y + 90, transform.localEulerAngles.z) * Time.deltaTime);
+            m_Direction = m_Velocity.normalized;
+            Rotate = Quaternion.LookRotation(m_Direction);
         }
-
         rb.MovePosition(rb.position + m_Velocity * Time.deltaTime);
-        //rb.MoveRotation(rb.rotation * rotate);
         rb.MoveRotation(rb.rotation * Rotate);
     }
 }
