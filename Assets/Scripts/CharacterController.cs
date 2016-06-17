@@ -54,12 +54,16 @@ public class CharacterController : MonoBehaviour
 
         // Rotate
         Quaternion Rotate = Quaternion.identity;
-
-        m_AngleVel = Quaternion.LookRotation(rb.velocity).eulerAngles;
+        
 
         if (Input.GetKey(KeyCode.W))
         {
-            m_Velocity += transform.forward = new Vector3(0, 0, 1) * m_MovementSpeed * Time.deltaTime;
+            m_Velocity += transform.forward * m_MovementSpeed * Time.deltaTime;
+            //if(m_Velocity != Vector3.zero)
+            //{
+
+            //    transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(m_Velocity), Time.deltaTime * m_TurnSpeed); ;
+            //}
 
             //m_Direction = m_Velocity.normalized;
             //Rotate = Quaternion.LookRotation(m_Direction);
@@ -67,7 +71,12 @@ public class CharacterController : MonoBehaviour
 
         if (Input.GetKey(KeyCode.S))
         {
-            m_Velocity += transform.forward = new Vector3(0, 0, -1) * m_MovementSpeed * Time.deltaTime;
+            m_Velocity -= transform.forward * m_MovementSpeed * Time.deltaTime;
+            //if (m_Velocity != Vector3.zero)
+            //{
+
+            //    transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(m_Velocity), Time.deltaTime * m_TurnSpeed); ;
+            //}
 
             //m_Direction -= m_Velocity.normalized;
             //Rotate = Quaternion.LookRotation(m_Direction);
@@ -75,7 +84,12 @@ public class CharacterController : MonoBehaviour
 
         if (Input.GetKey(KeyCode.A))
         {
-            m_Velocity += transform.forward = new Vector3(-1, 0, 0) * m_MovementSpeed * Time.deltaTime;
+            m_Velocity -= transform.right * m_MovementSpeed * Time.deltaTime;
+            //if (m_Velocity != Vector3.zero)
+            //{
+
+            //    transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(m_Velocity), Time.deltaTime * m_TurnSpeed); ;
+            //}
 
             //m_Direction = m_Velocity.normalized;
             //Rotate = Quaternion.LookRotation(m_Direction);
@@ -84,7 +98,13 @@ public class CharacterController : MonoBehaviour
 
         if (Input.GetKey(KeyCode.D))
         {
-            m_Velocity += transform.forward = new Vector3(1,0,0) * m_MovementSpeed * Time.deltaTime;
+            m_Velocity += transform.right * m_MovementSpeed * Time.deltaTime;
+            //if (m_Velocity != Vector3.zero)
+            //{
+
+            //    transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(m_Velocity), Time.deltaTime * m_TurnSpeed); ;
+            //}
+
             //m_Direction = m_Velocity.normalized;
             //Rotate = Quaternion.LookRotation(m_Direction);
             //transform.rotation = Rotate;
